@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\Teacher;
 use App\Services\TeacherService;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class TeacherController extends Controller
@@ -14,7 +15,7 @@ class TeacherController extends Controller
 
     public function __construct(TeacherService $service)
     {
-        return $this->service = $service;
+        $this->service = $service;
     }
 
     public function index()
@@ -52,5 +53,13 @@ class TeacherController extends Controller
     {
         $this->service->delete($teacher);
         return redirect()->route('admin.teacher.index')->with('success', 'Data teacher deleted');
+    }
+
+    public function available(Request $request)
+    {
+        $subjectId = $request->query('subject_id');
+        $teachers = $this->service->getAvailableTeachersForSubject($subjectId);
+
+        return response()->json($teachers);
     }
 }

@@ -63,6 +63,17 @@ class TeacherService
         });
     }
 
+    public function getAvailableTeachersForSubject($subjectId)
+    {
+        $usedTeacherIds = DB::table('subject_teacher')
+            ->where('subject_id', $subjectId)
+            ->pluck('teacher_id');
+
+        return Teacher::whereNotIn('id', $usedTeacherIds)
+            ->with('user')
+            ->get();
+    }
+
     private function forgetCache()
     {
         Cache::forget('teachers.all');

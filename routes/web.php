@@ -50,6 +50,8 @@ Route::middleware(['auth','role:admin'])->prefix('admin')->name('admin.')->group
     Route::resource('schedule', ScheduleController::class);
     Route::resource('student_attendance', StudentAttendanceController::class);
     Route::resource('score', ScoreController::class);
+
+    Route::get('available-teachers', [TeacherController::class, 'available'])->name('available-teachers');
 });
 
 Route::get('/csrf-cookie', function () {

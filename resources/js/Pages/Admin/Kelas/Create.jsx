@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, useForm, Link } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Create({ auth }) {
     const { data, setData, post, processing, errors } = useForm({ nama: '' });
@@ -15,7 +15,7 @@ export default function Create({ auth }) {
             <form onSubmit={submit}>
                 <div className="mb-3">
                     <label className="form-label">Nama Kelas</label>
-                    <input type="text" className={`form-control ${errors.nama ? 'is-invalid' : ''}`} value={data.nama} onChange={e => setData('nama', e.target.value)} />
+                    <input type="text" className={`form-control ${errors.nama ? 'is-invalid' : ''}`} value={data.nama} onChange={e => setData('nama', e.target.value)} autoFocus/>
                     {errors.nama && <div className="invalid-feedback">{errors.nama}</div>}
                 </div>
                 <button type="submit" className="btn btn-primary" disabled={processing}>Simpan</button>

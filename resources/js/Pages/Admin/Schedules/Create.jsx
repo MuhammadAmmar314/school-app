@@ -22,7 +22,7 @@ export default function Create({ auth, kelas, subjects, teachers })
             <form onSubmit={submit}>
                 <div className="mb-3">
                     <label className="form-label">Kelas</label>
-                    <select value={data.kelas_id} className={`form-control ${errors.kelas ? 'is-invalid' : ''}`} onChange={e => setData('kelas_id', e.target.value)}>
+                    <select value={data.kelas_id} className={`form-control ${errors.kelas ? 'is-invalid' : ''}`} onChange={e => setData('kelas_id', e.target.value)} autoFocus>
                         <option value="">-- Pilih Kelas --</option>
                         {kelas.map((k) => (
                             <option key={k.id} value={k.id}>{k.nama}</option>
@@ -33,9 +33,9 @@ export default function Create({ auth, kelas, subjects, teachers })
 
                 <div className="mb-3">
                     <label className="form-label">Mata Pelajaran</label>
-                    <select 
-                        value={data.subject_id} 
-                        className={`form-control ${errors.subject_id ? 'is-invalid' : ''}`} 
+                    <select
+                        value={data.subject_id}
+                        className={`form-control ${errors.subject_id ? 'is-invalid' : ''}`}
                         onChange={e => {
                             const id = e.target.value;
                             setData('subject_id', id);
@@ -54,14 +54,14 @@ export default function Create({ auth, kelas, subjects, teachers })
 
                 <div className="mb-3">
                     <label className="form-label">Pengajar</label>
-                    <select 
-                        value={data.teacher_id} 
-                        className={`form-control ${errors.teacher_id ? 'is-invalid' : ''}`} 
+                    <select
+                        value={data.teacher_id}
+                        className={`form-control ${errors.teacher_id ? 'is-invalid' : ''}`}
                         onChange={e => setData('teacher_id', e.target.value)}
                         disabled={!selectedSubject || !selectedSubject.teacher}
                     >
                         <option value="">
-                            {selectedSubject 
+                            {selectedSubject
                             ? selectedSubject.teacher
                                 ? '-- Pilih Guru --'
                                 : 'Tidak ada guru pada mata pelajaran ini'

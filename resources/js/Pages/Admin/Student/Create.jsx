@@ -20,7 +20,7 @@ export default function Create({ auth, kelas }){
             <form onSubmit={submit}>
                 <div className="mb-3">
                     <label className="form-label">Nama</label>
-                    <input type="text" className={`form-control ${errors.nama ? 'is-invalid' : ''}`} value={data.nama} onChange={e => setData('nama', e.target.value)} />
+                    <input type="text" className={`form-control ${errors.nama ? 'is-invalid' : ''}`} value={data.nama} onChange={e => setData('nama', e.target.value)} autoFocus/>
                     {errors.nama && <div className="invalid-feedback">{errors.nama}</div>}
                 </div>
                 <div className='mb-3'>

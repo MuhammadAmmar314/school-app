@@ -10,16 +10,17 @@ class SubjectService
 {
     public function list()
     {
-        return Cache::remember('subjects.all', 60, function() {
-            return Subject::with(['teachers.user'])->get();
-        });
+        // return Cache::remember('subjects.all', 60, function() {
+            return Subject::all();
+        // });
     }
 
     public function store(array $data)
     {
         $this->forgetCache();
         return DB::transaction(function() use($data){
-            return Subject::create($data);
+            $subject = Subject::create($data);
+            return $subject;
         });
     }
 

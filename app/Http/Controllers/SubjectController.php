@@ -18,7 +18,7 @@ class SubjectController extends Controller
     }
 
     public function index()
-    {   
+    {
         // return $this->service->list();
         return inertia('Admin/Subjects/Index', ['subjects' => $this->service->list()]);
     }
@@ -28,8 +28,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $teachers = Teacher::with('user')->get();
-        return inertia('Admin/Subjects/Create', ['teachers' => $teachers]);
+        return inertia('Admin/Subjects/Create');
     }
 
     /**
@@ -54,8 +53,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        $teachers = Teacher::with('user')->get();
-        return inertia('Admin/Subjects/Edit', ['teachers' => $teachers, 'subject' => $subject]);
+        return inertia('Admin/Subjects/Edit', ['subject' => $subject]);
     }
 
     /**

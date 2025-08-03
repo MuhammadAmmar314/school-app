@@ -23,11 +23,6 @@ export default function Index({ auth, subjects }) {
             sortable: true
         },
         {
-            name: 'Pengajar',
-            selector: row => row.teacher?.user.name,
-            sortable: true
-        },
-        {
             name: 'Aksi',
             selector: row => (
                 <div>
@@ -58,7 +53,7 @@ export default function Index({ auth, subjects }) {
                 <Link href={route('admin.subject.create')} className="btn btn-primary btn-sm">Tambah Mata Pelajaran</Link>
             </div>
 
-            <DataTable 
+            <DataTable
                 columns={columns}
                 data={subjects}
                 pagination
